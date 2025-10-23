@@ -1,6 +1,5 @@
-# Projektin nimi ja tekijät
-Projektin nimi ja kaikki mukana olevat tekijät. 
-
+# Projektin nimi ja tekijät 
+TODO-app Miku Honkanen
 ## Verkkolinkit:
 Pääset julkaistuun sovellukseen käsiksi osoitteessa [google.com](https://google.com)
 Linkki projektin videoesittelyyn [google.com](https://google.com)
