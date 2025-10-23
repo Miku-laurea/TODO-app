@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>TODO-sovellus — Moderni minimalistinen</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="container">
+    <header class="header">
+      <h1>TODO</h1>
+
+      <!-- Teeman vaihto -->
+      <div class="theme">
+        <label for="themeSwitch">Vaalea</label>
+        <input id="themeSwitch" type="checkbox" aria-label="Vaihda teema">
+        <label for="themeSwitch">Tumma</label>
+      </div>
+    </header>
+
+    <!-- Tehtävän lisäys, kategorian valinta-->
+    <section class="add-area">
+      <input id="taskInput" type="text" placeholder="Kirjoita uusi tehtävä..." aria-label="Tehtävä">
+      <select id="categorySelect" aria-label="Kategoria">
+        <option value="henkilökohtainen">Henkilökohtainen</option>
+        <option value="työ">Työ</option>
+        <option value="koulu">Koulu</option>
+      </select>
+      <!-- Määräpäivä asettaminen datetime-local hyödyntäen -->
+      <input id="deadlineInput" type="datetime-local" aria-label="Määräpäivä (valinnainen)">
+      <button id="addBtn">Lisää</button>
+    </section>
+    <p id="errorMsg" class="error" aria-live="polite"></p>
+
+    <!-- Tehtävien hakutoiminto-->
+    <section class="search-area">
+      <input id="searchInput" type="text" placeholder="Hae tehtäviä..." aria-label="Hae tehtäviä">
+    </section>
+
+    <!-- Suodattimet -->
+    <nav class="filters">
+      <button id="allBtn" class="active">Kaikki</button>
+      <button id="activeBtn">Aktiiviset</button>
+      <button id="doneBtn">Tehdyt</button>
+
+      <!-- kategoriasuodatin -->
+      <select id="categoryFilter" aria-label="Suodata kategoriasta">
+        <option value="all">Kaikki kategoriat</option>
+        <option value="henkilökohtainen">Henkilökohtainen</option>
+        <option value="työ">Työ</option>
+        <option value="koulu">Koulu</option>
+      </select>
+    </nav>
+
+    <!-- Lista -->
+    <ul id="taskList" class="task-list" aria-live="polite"></ul>
+
+    <!-- Alapalkki: laskuri ja tyhjennys -->
+    <footer class="footer">
+      <div id="counter">Tehtäviä: 0</div>
+      <div class="footer-buttons">
+        <button id="clearBtn" class="danger">Tyhjennä kaikki</button>
+      </div>
+    </footer>
+  </div>
+
+  <!-- JavaScript -->
+  <script src="script.js"></script>
+</body>
+</html>
+

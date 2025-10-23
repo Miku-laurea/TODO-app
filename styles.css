@@ -1,0 +1,200 @@
+/* styles.css
+   Moderni minimalistinen tyyli: harmaa / sininen, pyöristetyt kulmat
+*/
+
+/* Fontti*/
+body {
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+:root{
+  --bg: #f4f6f8;
+  --card: #ffffff;
+  --muted: #6b7280;
+  --accent: #2563eb;   /* sininen painikkeille */
+  --accent-weak: #dbeafe;
+  --danger: #ef4444;   /* punainen virheille / umpeutuneille */
+  --shadow: rgba(16,24,40,0.08);
+  --text: #0f172a;
+}
+
+/* Tumma teema (body.light togglen avulla käänteinen) */
+body.dark {
+  --bg: #0b1220;
+  --card: #0f1724;
+  --muted: #9ca3af;
+  --accent: #4f9aff;
+  --accent-weak: #0b1229;
+  --danger: #ff6b6b;
+  --shadow: rgba(2,6,23,0.6);
+  --text: #e6eef8;
+}
+
+/* Perusasettelu keskitetty kortti */
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: "Inter", system-ui, Roboto, "Helvetica Neue", Arial;
+  background: var(--bg);
+  color: var(--text);
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 40px 16px;
+}
+
+/* Keskuskortti */
+.container{
+  width: 100%;
+  max-width: 860px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02)), var(--card);
+  border-radius: 14px;
+  padding: 22px;
+  box-shadow: 0 8px 30px var(--shadow);
+}
+
+/* Header: otsikko ja teemavaihto */
+.header{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap: 12px;
+}
+.header h1 { margin:0; font-size:1.6rem; letter-spacing: -0.5px; color: var(--accent); }
+
+/* Teemavaihto yksinkertainen */
+.theme { display:flex; align-items:center; gap:8px; font-size:0.9rem; color:var(--muted); }
+.theme input[type="checkbox"] { width:40px; height:20px; cursor:pointer; }
+
+/* Lisää-alue rivinä: kentät ja nappi */
+.add-area {
+  display:flex;
+  gap:10px;
+  margin-top:18px;
+  align-items:center;
+}
+.add-area input[type="text"],
+.add-area select,
+.add-area input[type="datetime-local"] {
+  background: transparent;
+  border: 1px solid rgba(15,23,42,0.06);
+  padding:10px 12px;
+  border-radius:10px;
+  outline:none;
+  min-height:42px;
+  color: var(--text);
+  box-shadow: 0 2px 8px var(--shadow);
+}
+.add-area input[type="text"] { flex:1; }
+.add-area select { width:170px; }
+.add-area input[type="datetime-local"] { width:220px; }
+
+/* Lisää-painike */
+.add-area button {
+  background: var(--accent);
+  color: white;
+  border: none;
+  padding: 10px 16px;
+  border-radius:10px;
+  cursor:pointer;
+  font-weight:600;
+  box-shadow: 0 6px 18px rgba(37,99,235,0.18);
+}
+.add-area button:hover { transform: translateY(-2px); }
+
+/* Virheteksti */
+.error { color: var(--danger); margin:8px 0 0 0; font-size:0.95rem; }
+
+/* Haku kenttä*/
+.search-area {
+  position: relative;
+  width: 100%;
+  max-width: 400px;
+}
+
+#searchInput {
+  width: 100%;
+  padding: 10px 10px 10px 40px; /* kuvake vasemmalle */
+  border: 1px solid #555;
+  border-radius: 25px;
+  background:transparent url("images/Haku_kuvake.png") no-repeat 10px center;
+  background-size: 20px 20px; /* kuvakkeen koko */
+  color: #fff;
+}
+
+/* Suodatinnapit + kategoriavalitsin */
+.filters {
+  display:flex;
+  gap:8px;
+  align-items:center;
+  margin-top:14px;
+  flex-wrap:wrap;
+}
+.filters button {
+  background: transparent;
+  border:1px solid rgba(15,23,42,0.06);
+  color:var(--muted);
+  padding:8px 12px;
+  border-radius:8px;
+  cursor:pointer;
+}
+.filters button.active {
+  background: var(--accent);
+  color: white;
+  border-color: transparent;
+}
+
+/* Tehtävälista */
+.task-list { list-style:none; margin:18px 0 0 0; padding:0; display:flex; flex-direction:column; gap:10px; }
+
+/* Yksittäinen tehtäväkortti */
+.task-item {
+  display:flex;
+  justify-content:space-between;
+  gap:12px;
+  padding:12px;
+  border-radius:12px;
+  background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(0,0,0,0.02));
+  border: 1px solid rgba(15,23,42,0.04);
+  align-items:center;
+  transition: transform 0.12s ease, background 0.12s;
+}
+.task-item:hover { transform: translateY(-4px); }
+
+/* Tekstin puoli ja meta (aika/kategoria) */
+.task-main { display:flex; flex-direction:column; gap:6px; max-width:68%; }
+.task-title { font-weight:600; font-size:0.98rem; word-break:break-word; }
+.task-meta { font-size:0.85rem; color:var(--muted); display:flex; gap:8px; align-items:center; }
+
+/* Toiminnot (napit) */
+.task-actions { display:flex; gap:8px; align-items:center; }
+.task-actions button {
+  background:transparent; border:1px solid rgba(15,23,42,0.06); color:var(--muted); padding:8px 10px; border-radius:8px; cursor:pointer;
+}
+.task-actions button.primary { background:var(--accent); color:white; border:none; }
+
+/* Tehty-tila */
+.task-item.done { opacity:0.6; text-decoration:line-through; }
+
+/* Deadline lähestyy -merkintä */
+.warn { color:#ffb020; font-weight:600; }
+
+/* Deadline mennyt -> punainen tausta */
+.task-item.overdue { background: linear-gradient(180deg, rgba(255,100,100,0.07), rgba(255,50,50,0.05)); border-color: rgba(255,100,100,0.2); }
+
+/* Prioriteettibaarit (pieni vasen väri) */
+.task-item.low { border-left: 6px solid #34d399; }     /* vihreä */
+.task-item.normal { border-left: 6px solid #f59e0b; }  /* oranssi */
+.task-item.high { border-left: 6px solid #ef4444; }    /* punainen */
+
+/* Footer */
+.footer { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-top:18px; }
+.footer .danger { background:var(--danger); color:white; padding:8px 12px; border-radius:8px; }
+
+/* Pieni näyttö (responsiivisuus) */
+@media (max-width:720px) {
+  .add-area { flex-direction:column; align-items:stretch; }
+  .add-area select, .add-area input[type="datetime-local"] { width:100%; }
+  .task-main { max-width:100%; }
+}
+
